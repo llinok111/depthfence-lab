@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>depthfence-lab — 你的深度缓冲在几米外失效？</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; background: #0b0e13; color: #cfd8e3; }
+  #app { display: grid; grid-template-columns: 1fr 360px; height: 100vh; }
+  #view { position: relative; min-width: 0; }
+  canvas { display: block; }
+  #panel { border-left: 1px solid #1e2836; padding: 14px 16px; overflow-y: auto; }
+  h1 { font-size: 15px; margin: 0 0 4px; color: #eaf2ff; }
+  h2 { font-size: 12px; margin: 18px 0 6px; color: #7fa3c7; text-transform: uppercase; letter-spacing: .08em; }
+  .sub { color: #6f8299; margin-bottom: 12px; }
+  label { display: block; margin: 10px 0 2px; color: #9fb4cc; }
+  input[type=range] { width: 100%; }
+  .val { color: #ffd479; }
+  table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+  th, td { text-align: right; padding: 3px 4px; border-bottom: 1px solid #17202c; }
+  th:first-child, td:first-child { text-align: left; color: #9fb4cc; }
+  .tie { color: #ff6b6b; } .safe { color: #5ee08a; }
+  #verdict { margin-top: 10px; padding: 10px; border-radius: 6px; background: #131a24; border: 1px solid #223; }
+  #note { color: #6f8299; font-size: 12px; margin-top: 10px; }
+  code { color: #9ad2ff; }
+  #plot { width: 100%; height: 150px; margin-top: 6px; background: #0e141c; border-radius: 4px; }
+</style>
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.169.0/build/three.module.js" } }
+</script>
+</head>
+<body>
+<div id="app">
+  <div id="view"></div>
+  <aside id="panel">
+    <h1>depthfence-lab</h1>
+    <div class="sub">标准深度缓冲在 1 km 处只能分辨 0.596 m。<br>拖动滑块，看你的场景在哪一米开始 z-fight。</div>
+
+    <label>近平面 near = <span class="val" id="nearVal">0.10</span> m</label>
+    <input id="near" type="range" min="-1" max="2.3" step="0.01" value="-1">
+
+    <label>贴片距离 D = <span class="val" id="distVal">1000</span> m</label>
+    <input id="dist" type="range" min="1" max="3.46" step="0.005" value="3">
+
+    <h2>core.mjs 实时判定（2 cm 视深差）</h2>
+    <table id="modes">
+      <tr><th>mode</th><th>1 ULP @D</th><th>2 cm 可分辨?</th></tr>
+      <tr><td>standard</td><td id="ws">-</td><td id="ts">-</td></tr>
+      <tr><td>reversed</td><td id="wr">-</td><td id="tr">-</td></tr>
+      <tr><td>log</td><td id="wl">-</td><td id="tl">-</td></tr>
+    </table>
+    <div id="verdict">—</div>
+    <canvas id="plot" width="640" height="300"></canvas>
+    <div id="note">判定来自 <code>src/core.mjs</code>，与 <code>node bench/verify.mjs</code> 同一个函数。
+      画面里的条纹由 GPU 深度缓冲决定，具体精度随驱动/位深不同；表格数字不依赖 GPU。</div>
+  </aside>
+</div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>

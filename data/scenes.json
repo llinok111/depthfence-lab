@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "scenes": [
+    {
+      "name": "highway-decals",
+      "near": 0.1,
+      "far": 3000,
+      "cameraHeight": 1.7,
+      "separation": 0.02,
+      "maxDistance": 3000,
+      "pitch": 0.05,
+      "width": 256,
+      "height": 144,
+      "what": "road paint 2 cm above asphalt, driver eye 1.7 m"
+    },
+    {
+      "name": "gis-roads",
+      "near": 1,
+      "far": 100000,
+      "cameraHeight": 50,
+      "separation": 0.5,
+      "maxDistance": 100000,
+      "pitch": 0.08,
+      "width": 256,
+      "height": 144,
+      "what": "regional GIS, road surface half a metre above terrain"
+    },
+    {
+      "name": "cad-assembly",
+      "near": 0.01,
+      "far": 50,
+      "cameraHeight": 0.5,
+      "separation": 0.0005,
+      "maxDistance": 50,
+      "pitch": 0.06,
+      "width": 192,
+      "height": 108,
+      "what": "CAD assembly, 0.5 mm shim plate in a 50 m workspace"
+    },
+    {
+      "name": "flightsim",
+      "near": 0.5,
+      "far": 200000,
+      "cameraHeight": 100,
+      "separation": 1,
+      "maxDistance": 200000,
+      "pitch": 0.02,
+      "width": 256,
+      "height": 144,
+      "what": "flight simulator terrain, 1 m runway paint at 100 km draw distance"
+    },
+    {
+      "name": "city-blocks",
+      "near": 0.2,
+      "far": 20000,
+      "cameraHeight": 20,
+      "separation": 0.05,
+      "maxDistance": 20000,
+      "pitch": 0.1,
+      "width": 256,
+      "height": 144,
+      "what": "city scale, 5 cm lane marking seen from 20 m up"
+    },
+    {
+      "name": "micro-part",
+      "near": 0.0005,
+      "far": 2,
+      "cameraHeight": 0.05,
+      "separation": 0.00002,
+      "maxDistance": 2,
+      "pitch": 0.07,
+      "width": 192,
+      "height": 108,
+      "what": "micro-machined part, 20 micron coating in a 2 m rig"
+    }
+  ]
+}

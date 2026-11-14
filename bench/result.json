@@ -1,0 +1,88 @@
+{
+  "generatedAt": "2026-11-14T12:27:42.843Z",
+  "node": "v24.19.0",
+  "warmup": 1,
+  "reps": 7,
+  "workload": {
+    "certifyQueries": 2000,
+    "baselineFrames": 40,
+    "framePixels": 19968
+  },
+  "certify": {
+    "coldMs": 4.00917911529541,
+    "median": 3.9726696014404297,
+    "min": 3.908989906311035,
+    "max": 4.318760871887207,
+    "p95": 4.318760871887207,
+    "stddev": 0.13108616711279475,
+    "relStddev": 0.03246985216056509,
+    "perQueryUs": 1.9863348007202148
+  },
+  "renderBaseline": {
+    "coldMs": 51.53679180145264,
+    "median": 30.158842086791992,
+    "min": 25.43662166595459,
+    "max": 51.53679180145264,
+    "p95": 51.53679180145264,
+    "stddev": 9.784173874496071,
+    "relStddev": 0.2774395602669576,
+    "perFrameMs": 0.7539710521697998
+  },
+  "speedupPerAnswer": 379.57903768107036,
+  "resolutionAt1km_near0_1_far3000": {
+    "standard_m": 0.5956845686127964,
+    "reversed_m": 0.00007275715438481711,
+    "log_m": 0.0004777137414748722,
+    "standardOverReversed": 8187.298880082413,
+    "standardOverLog": 1246.948783122098
+  },
+  "oracleAgreement": {
+    "samples": 552960,
+    "mismatches": 0,
+    "tied": 49920,
+    "charts": 18
+  },
+  "fix": {
+    "highway": {
+      "chosen": "reversed-z",
+      "margin": 231.00918296721542,
+      "candidates": [
+        {
+          "kind": "raise-near",
+          "feasible": false,
+          "worstWidth": null,
+          "near": null
+        },
+        {
+          "kind": "reversed-z",
+          "feasible": true,
+          "worstWidth": 0.00008657664488964657,
+          "near": 0.1
+        },
+        {
+          "kind": "log-depth",
+          "feasible": true,
+          "worstWidth": 0.0021482806309904845,
+          "near": 0.1
+        }
+      ],
+      "verifyWorst": 0.00007275715438481711,
+      "verifyOk": true
+    },
+    "cad": {
+      "chosen": "raise-near",
+      "near": 0.44307491518573655,
+      "margin": 1.0000000007484005,
+      "verifyOk": true,
+      "verifyWorst": 0.00014814798363005366
+    }
+  },
+  "naiveNearPlaneCheck": {
+    "verdict": "safe",
+    "stepAtNear_m": 7.275957614183427e-13
+  },
+  "grazingControl": {
+    "pixels": 19968,
+    "ties": 0
+  }
+}
